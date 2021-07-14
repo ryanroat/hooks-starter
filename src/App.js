@@ -8,9 +8,20 @@ const App = () => {
     <div className="main-wrapper">
       <h1>Level Up Dishes</h1>
       <Toggle />
-      <input type="text" onChange={(e) => {setName(e.target.value)}} value={name} />
+      <form onSubmit={(e) => {
+        e.preventDefault();
+        fromSubmit(name, setName)
+      }}>
+        <input type="text" onChange={(e) => {setName(e.target.value)}} value={name} />
+        <button>Submit</button>
+      </form>
     </div>
   );
 };
+
+const fromSubmit = (value, setValue) => {
+  console.log(`email sent to ${value}`);
+  setValue('');
+}
 
 export default App;
